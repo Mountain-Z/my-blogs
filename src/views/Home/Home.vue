@@ -1,17 +1,21 @@
 <template>
   <div id="home">
     <swipper :banner="banner" />
-    <showContent />
+    <showContent :items="articleItems" />
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import swipper from "./Child/swipper";
 import showContent from "./Child/showContent/showContent";
+
+import { getarticleDetail } from "../../network/home";
 
 export default {
   data() {
     return {
+      articleItems: null,
       banner: [
         {
           id: 256,
@@ -35,14 +39,21 @@ export default {
     swipper,
     showContent,
   },
+
+  created() {
+    getarticleDetail().then((res) => {
+      console.log(res.data);
+      this.articleItems = res.data;
+    });
+  },
 };
 </script>
 
 <style scoped>
 #home {
+  overflow: hidden;
   width: 1000px;
-  height: 2000px;
   margin: 0 auto;
   margin-top: 5px;
 }
-</style>
+</style>                                                                                                                                                                                        

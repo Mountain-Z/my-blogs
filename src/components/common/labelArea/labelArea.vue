@@ -37,8 +37,11 @@ export default {};
   width: 300px;
   height: 55px;
   line-height: 55px;
-  background-color: rgb(170, 170, 170);
-  border-bottom: 5px solid blue;
+  background-color: rgb(212, 212, 212);
+  border-bottom: 4px solid rgb(7, 7, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
   display: flex;
   justify-content: space-between;
 }

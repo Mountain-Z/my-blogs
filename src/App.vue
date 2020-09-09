@@ -19,7 +19,6 @@ export default {
 @import "assets/css/base.css";
 
 #app {
-  position: relative;
-  background: #f4f4f4;
+  background-color: #f4f4f4;
 }
 </style>

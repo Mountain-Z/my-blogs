@@ -1,20 +1,32 @@
 <template>
-  <div class="showContent">
+  <div id="showContent">
     <div class="showItem">
       <div v-for="(item,index) in items" :key="index">
         <show-item :items="item" @handleIndex="getItemsIndex(index)" />
       </div>
     </div>
     <div class="showOther">
-      <label-area></label-area>
-      <!-- 
-      <div class="categoryOutArea">
-        <div class="categoryInnerArea">
+      <label-area>
+        <div slot="title" class="More">
+          <a href="#">
+            <div class="more1">
+              <span class="iconfont">&#xe6f5;</span>
+              分类
+            </div>
+          </a>
+          <div>
+            <a href="#">
+              <div class="more2">More >></div>
+            </a>
+          </div>
+        </div>
+        <div class="categoryInnerArea" slot="content">
           <div v-for="(item,index) in categories" :key="item">
             <show-category :categories="item" @clickItem="handleCategoryIndex(index)" />
           </div>
         </div>
-      </div>-->
+      </label-area>
+
       <label-area></label-area>
 
       <div v-for="(item,index) in labels" :key="index">
@@ -31,28 +43,14 @@ import showCategory from "./child/showCategory";
 import labelArea from "components/common/labelArea/labelArea";
 
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {
-      items: [
-        {
-          id: 2345,
-          title: "关于用户上网",
-          details: "内有详细教程",
-          author: {
-            username: "Mountain_Z",
-            createTime: "2019-01-12",
-          },
-        },
-        {
-          id: 2345,
-          title: "关于用户上网",
-          details: "内有详细教程",
-          author: {
-            username: "Mountain_Z",
-            createTime: "2019-01-12",
-          },
-        },
-      ],
       labels: ["笔记", "IO流", "教程", "资源", "操作"],
       categories: ["其它技术", "学习", "旅行记录", "资源分享"],
     };
@@ -63,9 +61,11 @@ export default {
     showCategory,
     labelArea,
   },
+  created() {},
   methods: {
     handleCategoryIndex(index) {
       console.log(index);
+      console.log(this.items);
     },
     getItemsIndex(index) {
       console.log(index);
@@ -75,8 +75,9 @@ export default {
 </script>
 
 <style scoped>
-.showContent {
-  position: relative;
+#showContent {
+  overflow: hidden;
+  width: 1000px;
   display: flex;
   justify-content: space-between;
 }
@@ -86,7 +87,6 @@ export default {
 }
 
 .categoryOutArea {
-  position: absolute;
   right: 0;
   width: 300px;
   height: 300px;
@@ -98,11 +98,26 @@ export default {
 }
 
 .categoryInnerArea {
-  position: absolute;
   width: 264px;
   /* background-color: red; */
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2), -2px -2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   line-height: 40px;
+}
+
+.More {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+.More .more1 {
+  color: rgb(80, 80, 80);
+  font-size: 17px;
+
+  margin-left: 10px;
+}
+.More .more2 {
+  color: rgb(62, 132, 179);
+  margin-right: 8px;
 }
 </style>

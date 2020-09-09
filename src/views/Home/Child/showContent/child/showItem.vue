@@ -1,11 +1,11 @@
 <template>
   <div class="showItem">
-    <div class="items" @click="handleIndex">
+    <div class="items" @click="handleIndex(items.blogsId)">
       <h3 class="title">{{items.title}}</h3>
-      <div class="detail">{{items.details}}</div>
+      <div class="detail">{{items.discription}}</div>
       <div class="author">
-        <div>{{items.author.username}}</div>
-        <div>{{items.author.createTime}}</div>
+        <div>{{items.author}}</div>
+        <div>{{items.createDate}}</div>
         <div class="lebal"></div>
       </div>
     </div>
@@ -29,41 +29,45 @@ export default {
 
 <style scoped>
 .showItem {
-  position: relative;
   height: 150px;
   width: 600px;
   border-radius: 10px;
-  background-color: rgb(122, 253, 181);
-  margin: 10px 0;
+  background-color: #fff;
+  margin: 20px 0;
+  box-shadow: 5px 5px 2px rgba(2, 2, 2, 0.2);
 }
 
 .items {
-  position: absolute;
-  top: 25%;
-  left: 3%;
-  width: 460px;
+  padding: 15px;
+  width: 550px;
   height: 100px;
 }
 
 .title {
   color: #333333;
-  font-size: 1.2rem;
+  font-size: 1.2em;
+  height: 30px;
+  line-height: 30px;
 }
 
-.items .detail {
+.detail {
   margin-top: 10px;
-  width: 400px;
-  height: 40px;
+  height: 55px;
   line-height: 20px;
-  font-size: 16px;
-  overflow: elipse;
+  font-size: 1em;
+  line-height: 100%;
+
+  text-overflow: elipse;
 }
 .author {
+  margin-top: 5px;
+
   display: flex;
-  width: 300px;
   height: 20px;
+  width: 600px;
+  padding: 0 8px;
   line-height: 20px;
-  font-size: 13px;
+  font-size: 0.8em;
   justify-content: space-between;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="wrap">
-    <center>zhang</center>
+  <div class="wrapper">
+    <div>zhang</div>
   </div>
 </template>
 
@@ -8,10 +8,8 @@
 export default {};
 </script>
 
-<style>
-.wrap {
-  height: 500px;
-  width: 600px;
+<style scoped>
+.wrapper {
   background-color: red;
 }
 </style>
